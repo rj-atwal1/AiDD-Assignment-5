@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact - Personal Webpage</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Contact</h1>
+      <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="resume.html">Resume</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>Get in Touch</h2>
+      <p>Email: <a href="mailto:ratwal@iu.edu">ratwal@iu.edu</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/ratwal1/">https://www.linkedin.com/in/ratwal1/</a></p>
+
+      <h3>Contact form (front-end only)</h3>
+      <form id="contact-form" action="" method="post" onsubmit="return handleSubmit(event)">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
+
+        <label for="password">Password</label>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <input id="password" name="password" type="password" minlength="8" placeholder="At least 8 characters" required style="flex:1">
+          <button type="button" id="toggle-pw" class="btn" style="background:transparent;color:var(--sand);border:1px solid rgba(255,255,255,0.06);padding:6px 8px;border-radius:6px;">Show</button>
+        </div>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+
+    
+        <button type="submit" class="btn">Send</button>
+      </form>
+
+      <p> <a class="btn" href="mailto:ratwal@iu.edu">Email me</a></p>
+
+      <script>
+        // Toggle show/hide password
+        const pw = document.getElementById('password');
+        const toggle = document.getElementById('toggle-pw');
+        toggle.addEventListener('click', () => {
+          if (pw.type === 'password') { pw.type = 'text'; toggle.textContent = 'Hide'; }
+          else { pw.type = 'password'; toggle.textContent = 'Show'; }
+        });
+
+        // Simple client-side validation and placeholder submit handler
+        function handleSubmit(e) {
+          e.preventDefault();
+          const name = document.getElementById('name').value.trim();
+          const email = document.getElementById('email').value.trim();
+          const password = pw.value;
+          const message = document.getElementById('message').value.trim();
+
+          if (!name || !email || !message || password.length < 8) {
+            alert('Please complete the form. Password must be at least 8 characters.');
+            return false;
+          }
+
+          alert('This is a placeholder form. To actually send this message, wire the form to a server endpoint or use a form service.');
+          return false; // prevent navigation for placeholder
+        }
+      </script>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 RJVIR ATWAL</p>
+    </div>
+  </footer>
+  <script src="js/nav.js"></script>
+</body>
+</html>
